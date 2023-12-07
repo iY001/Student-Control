@@ -1,12 +1,7 @@
-import { } from "react";
-
-
-const Page = () => {
+~const Page = () => {
     return (
         < >
-
             settings
-
         </ >
     );
 }
