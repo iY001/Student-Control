@@ -1,9 +1,7 @@
 const Page = () => {
     return (
         < >
-
             students
-
         </ >
     );
 }
