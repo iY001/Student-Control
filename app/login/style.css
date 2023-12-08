@@ -14,7 +14,7 @@
 /* styling of animated border */
 .input-border {
   position: absolute;
-  background: #5891ff;
+  background: #592c8c;
   width: 0%;
   height: 2px;
   bottom: 0;
@@ -40,7 +40,7 @@
   transform: translateY(-20px);
   font-size: 0.8rem;
   /* Adjust font size on focus/valid */
-  color: #5891ff;
+  color: #592c8c;
   /* Change color as needed */
 }
 
