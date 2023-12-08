@@ -1,0 +1,51 @@
+/* styling of Input */
+.input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  outline: none;
+  /* border-bottom: 1.5px solid #dddddd63; */
+}
+
+/* styling of animated border */
+.input-border {
+  position: absolute;
+  background: #5891ff;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+
+/* label styling */
+.input-label {
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  color: #999;
+  /* Change color as needed */
+  transition: 0.3s;
+  pointer-events: none;
+  /* Ensure label doesn't interfere with input */
+}
+
+/* label behavior when input is focused or valid */
+.input:focus~.input-label,
+.input:valid~.input-label {
+  transform: translateY(-20px);
+  font-size: 0.8rem;
+  /* Adjust font size on focus/valid */
+  color: #5891ff;
+  /* Change color as needed */
+}
+
+/* input border behavior on focus or valid */
+.input:focus~.input-border,
+.input:valid~.input-border {
+  width: 100%;
+}
