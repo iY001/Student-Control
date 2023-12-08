@@ -10,7 +10,10 @@ const Page = () => {
       <section className="flex flex-col items-start h-full flex-1 p-10">
         <a href="#!" className="w-[50px] h-[50px] flex items-center gap-2">
           <img src="https://placeholder.com/50/100" alt="logo" />
-          <h1 className=" font-bold  whitespace-nowrap uppercase ">Students control</h1>
+          <section>
+          <h1 className="font-bold">STUDENTS</h1>
+          <h1 className=" font-bold  uppercase ">control</h1>
+          </section>
         </a>
 
         <form className="flex flex-col items-center gap-10 w-full h-full mt-[70px]  ">
@@ -19,21 +22,21 @@ const Page = () => {
           <div className="relative w-[380px] flex items-center  gap-1 border-b border-[#dddddd63]">
         <IoPersonOutline  size={20} />
         <input className="input" name="name" required type="text" />
-        <label className="input-label">Name</label>
+        <label className="input-label mx-3">Name</label>
         <span className="input-border" />
       </div>
 
       <div className="relative w-[380px] flex items-center  gap-1  border-b border-[#dddddd63]">
         <IoMailOutline  size={20} />
         <input className="input" name="email" required type="text" />
-        <label className="input-label">Email</label>
+        <label className="input-label mx-3">Email</label>
         <span className="input-border" />
       </div>
 
       <div className="relative w-[380px] flex items-center  gap-1 border-b border-[#dddddd63]">
         <IoLockClosedOutline  size={20}/>
         <input className="input" name="password" required type="password" />
-        <label className="input-label">Password</label>
+        <label className="input-label mx-3">Password</label>
         <span className="input-border" />
       </div>
 
