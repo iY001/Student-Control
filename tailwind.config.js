@@ -14,6 +14,7 @@ module.exports = {
         'forth': "#b135cf", // Very Brigth
         'light1': "#f3f3f3",
         'light2': "#f5f5f5",
+        'scdisabled': "#475569" // Disable / Close Color
       }
     },
   },
