@@ -1,69 +1,64 @@
+"use client";
 import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { FaChartBar, FaClipboardList, FaChalkboardTeacher, FaUserGraduate, FaUserAlt, FaCog } from 'react-icons/fa';
 import Link from "next/link";
+import { useEffect, useState } from "react";
 const SideBar = () => {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const screenWidth = window.innerWidth;
+      setIsMobile(screenWidth < 968); // Adjust the screen width threshold as needed
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+  }, [])
+
   return (
-    <aside class="bg-main h-screen fixed top-0 left-0 min-w-[250px] pt-3 pb-4 text-center font-[sans-serif] overflow-auto">
-    <div class="relative flex flex-col h-full">
+    <aside className={`bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[82px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
+      <div className="relative flex flex-col h-full">
         <div>
-            <img src alt />
-            <section>
-                <h1 className="text-2xl font-bold text-white">STUDENT</h1>
-                <h1 className="text-2xl font-bold text-white">CONTROL</h1>
-            </section>
+          {/* <img src alt /> */}
+          <section>
+            <h1 className="lg:text-2xl font-bold text-white">STUDENT <br />CONTROL</h1>
+          </section>
         </div>
         <hr className="mx-4 my-3" />
-        <ul class="flex-1 flex flex-col gap-3">
-        <li>
-        <Link href="/dashboard" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaChartBar className="w-[18px] h-[18px] mr-3" />
-          <span>Dashboard</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/dashboard/reports" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaClipboardList className="w-[18px] h-[18px] mr-3" />
-          <span>Reports</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/dashboard/classes" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaChalkboardTeacher className="w-[18px] h-[18px] mr-3" />
-          <span>Classes</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/dashboard/students" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaUserGraduate className="w-[18px] h-[18px] mr-3" />
-          <span>Students</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/dashboard/account" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaUserAlt className="w-[18px] h-[18px] mr-3" />
-          <span>Account</span>
-        </Link>
-      </li>
-      <li>
-        <Link href="/dashboard/settings" className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
-          <FaCog className="w-[18px] h-[18px] mr-3" />
-          <span>Settings</span>
-        </Link>
-      </li>
+        <ul className={`flex-1 flex flex-col ${isMobile ? "items-center" : ""}  gap-3`}>
+          <SideBarItem isMobile={isMobile}  href="/dashboard" icon={FaChartBar} name="Dashboard" />
+          <SideBarItem isMobile={isMobile}  href="/dashboard/reports" icon={FaClipboardList} name="Reports" />
+          <SideBarItem isMobile={isMobile}  href="/dashboard/classes" icon={FaChalkboardTeacher} name="Classes" />
+          <SideBarItem isMobile={isMobile}  href="/dashboard/students" icon={FaUserGraduate} name="Students" />
+          <SideBarItem isMobile={isMobile}  href="/dashboard/account" icon={FaUserAlt} name="Account" />
+          <SideBarItem isMobile={isMobile}  href="/dashboard/settings" icon={FaCog} name="Settings" />
         </ul>
 
-        <div class="flex flex-wrap items-center cursor-pointer border border-white rounded-full px-6 mx-5 py-2">
-            <CgProfile className="w-9 h-9 text-white" />
-            <div class="ml-4">
-                <p class="text-sm text-white">Profile Name</p>
-                <a href="#" class="text-xs flex text-gray-300 hover:text-white"><CiLogout className="text-sm mr-1" /> Sign out</a>
-            </div>
+        <div className="group flex lg:flex-row flex-col gap-2 lg:flex-wrap items-center cursor-pointer border border-white rounded-full px-6 mx-5 py-2">
+          {!isMobile && <CgProfile className="text-white text-3xl" />}
+          <div className="">
+            {!isMobile && <h1 className="text-white">John Smith</h1>}
+            <a href="#" className="text-xs flex text-gray-300 group-hover:text-white"><CiLogout className="lg:text-sm text-lg  " /> {!isMobile && <span>Sign Out</span>}</a>
+          </div>
         </div>
 
-    </div> {/* Sections */}
-</aside> 
+      </div> {/* Sections */}
+
+    </aside>
   );
 }
 
 export default SideBar;
+
+
+const SideBarItem = ({isMobile, href, icon: Icon, name }) => {
+  return (
+    <li>
+      <Link href={href} className="text-white hover:border-r-4 text-md flex items-center hover:bg-sec px-4 py-3 duration-300">
+        {Icon && <Icon className="w-[18px] h-[18px] mr-3" />}
+        {!isMobile && <span>{name}</span>}
+      </Link>
+    </li>
+  );
+};

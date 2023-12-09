@@ -7,9 +7,9 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+  } from 'chart.js';
 
+import { Bar } from 'react-chartjs-2';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -27,7 +27,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Absences in the Week',
     },
   },
 };
@@ -49,9 +49,8 @@ export const data = {
 const AbsenceChart = () => {
   
   return (
-    <div className="w-[700px]">
-      <h2>Absences in the Week</h2>
-      <Bar options={options} data={data} />;
+    <div className="md:w-[900px] w-full">
+      <Bar options={options} data={data} />
     </div>
   );
 }
