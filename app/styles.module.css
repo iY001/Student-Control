@@ -1,5 +1,5 @@
 .loader {
-  @apply bg-main;
+  @apply bg-main text-light2;
   width: 8px;
   height: 40px;
   border-radius: 4px;
@@ -7,7 +7,6 @@
   margin: 20px auto;
   position: relative;
   background: currentColor;
-  
   box-sizing: border-box;
   animation: animloader 0.3s 0.3s linear infinite alternate;
 }

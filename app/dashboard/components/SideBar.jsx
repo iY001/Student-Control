@@ -17,7 +17,7 @@ const SideBar = () => {
   }, [])
 
   return (
-    <aside className={`bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[82px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
+    <aside className={`md:z-10 bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[82px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
       <div className="relative flex flex-col h-full">
         <div>
           {/* <img src alt /> */}

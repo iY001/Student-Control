@@ -49,7 +49,7 @@ export const data = {
 const AbsenceChart = () => {
   
   return (
-    <div className="md:w-[900px] w-full">
+    <div className="w-full h-full">
       <Bar options={options} data={data} />
     </div>
   );
