@@ -3,6 +3,8 @@ import { CompactTable } from "@table-library/react-table-library/compact";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 
+import { useRowSelect } from "@table-library/react-table-library/select";
+
 const nodes =[
   {
     "id": "1",
@@ -76,6 +78,7 @@ const nodes =[
   }
 ]
 
+
 const Component = () => {
   const data = { nodes };
 
@@ -87,18 +90,35 @@ const Component = () => {
       `,
       HeaderCell:`color:  #4e1294;`,
       Row: `
+       &:first-child{
+        background-color: red;
+      }
+      
         &:nth-of-type(odd) {
           background-color: #f7fbfe;
+        
         }
+        &:not(:last-of-type)>.td {
+          border-bottom: none;
+          padding:10px
+      }
 
         &:nth-of-type(even) {
           background-color: #fffff;
+        }
+        &.row-select-selected{
+          background-color: #592c8c;
+          color:white
         }
       `,
     },
   ]);
 
+
+  const select = useRowSelect(data );
+
   const COLUMNS = [
+     { label: "Task", renderCell: (item) => item.name, select: true },
     { label: "Name", renderCell: (item) => item.name },
     { label: "Class", renderCell: (item) => item.class },
     { label: "Code", renderCell: (item) => item.code },
@@ -111,9 +131,8 @@ const Component = () => {
 
   return (
     <>
-      <CompactTable columns={COLUMNS} data={data} theme={theme} />
+      <CompactTable columns={COLUMNS} data={data} theme={theme} select={select} />
 
-      <br />
     </>
   );
 };

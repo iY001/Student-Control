@@ -37,7 +37,7 @@
 /* label behavior when input is focused or valid */
 .input:focus~.input-label,
 .input:valid~.input-label {
-  transform: translateY(-20px);
+  transform: translateY(-22px);
   font-size: 0.8rem;
   /* Adjust font size on focus/valid */
   color: #592c8c;

@@ -46,13 +46,13 @@ export const data = {
   ],
 };
 
-const AbsenceChart = () => {
+const StudentsAbsenceChart = () => {
   
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full flex justify-center">
       <Bar options={options} data={data} />
     </div>
   );
 }
 
-export default AbsenceChart;
+export default StudentsAbsenceChart;

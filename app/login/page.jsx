@@ -2,6 +2,7 @@ import "./style.css"
 import pattern from "./pattern.png"
 import Image from 'next/image';
 import { IoPersonOutline, IoMailOutline, IoLockClosedOutline } from 'react-icons/io5'; // Import outline icons
+import  Link  from 'next/link';
 
 const Page = () => {
   return (
@@ -40,7 +41,7 @@ const Page = () => {
         <span className="input-border" />
       </div>
 
-          <button className="bg-main shadow-xl hover:bg-sec duration-300 text-white p-3 lg:w-[60%] w-full  rounded">Log in</button>
+          <Link href="/dashboard"  className="bg-main shadow-xl hover:bg-sec duration-300 text-white p-3 lg:w-[60%] w-full  rounded text-center">Log in</Link>
 
           <h1 className="capitalize">forget your password ? <span className="text-sec text-xs cursor-pointer">conatct the admin</span></h1>
         </form>

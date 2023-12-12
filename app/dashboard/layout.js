@@ -17,7 +17,8 @@ const DashboardLayout = ({ children }) => {
     <main className='flex'>
 
       <section className='lg:flex'>
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
+      {/* 😀 قفلته عشان كل شوية يضايقني 😀 */}
         <SideBar />
         <div className='lg:w-[270px] w-[90px] h-[100vh]'></div>{/* save a place for the sidebar */}
       </section>
