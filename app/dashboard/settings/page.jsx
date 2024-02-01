@@ -7,7 +7,7 @@ const Page = () => {
                 <div>
                     <h1 className="uppercase font-bold text-main text-2xl mb-4">Settings</h1>
                 </div> {/* Title */}
-                <div className="bg-light2 px-8 py-4 w-2/4 mx-auto rounded-md">
+                <div className="bg-light2 px-8 py-4 w-2/4 mx-auto rounded-md border-2">
                     <section className="flex justify-between font-bold my-4">
                         <h1>Light Mode</h1>
                         <div className="relative inline-block">

@@ -8,6 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        d_grey: '#4D4D4D',
+        l_grey: '#89939E',
+        n_silver: '#F5F7FA',
         'main': '#592c8c', // Main Color
         'sec': '#7138b2', // For Hovering - Bright Main
         'third': "#702283", // Between
