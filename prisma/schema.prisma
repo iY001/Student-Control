@@ -17,32 +17,40 @@ model Grade {
 }
 
 model Classes {
-  id       String     @id @default(auto()) @map("_id") @db.ObjectId
-  className    String
-  Students Students[]
-  Absences Absences[]
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  className  String
+  Students   Students[]
+  Absences   Absences[]
   Department String?
-  Grade    Grade      @relation(fields: [gradeId], references: [id])
-  gradeId  String     @db.ObjectId
+  Grade      Grade      @relation(fields: [gradeId], references: [id])
+  gradeId    String     @db.ObjectId
 }
 
 model Students {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  stdCode    Int
-  Name       String
-  Grade      String
-  Class      String
-  Department String
-  Email      String
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  stdCode     Int
+  Name        String
+  Grade       String
+  Class       String
+  Department  String
+  Email       String
   phoneNumber Int
-  classId    String  @db.ObjectId
-  class      Classes @relation(fields: [classId], references: [id], onDelete: Cascade)
+  classId     String  @db.ObjectId
+  class       Classes @relation(fields: [classId], references: [id], onDelete: Cascade)
 }
 
 model Absences {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  classId     String   @db.ObjectId
-  class       Classes  @relation(fields: [classId], references: [id])
-  Date        DateTime @default(now())
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  classId    String   @db.ObjectId
+  class      Classes  @relation(fields: [classId], references: [id])
+  Date       DateTime @default(now())
   studentsID String[]
+}
+
+model Users {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  Username String
+  Email    String
+  Password String
+  Role     String
 }
