@@ -3,7 +3,8 @@ import { format } from "date-fns";
 
 const Prisma = new PrismaClient();
 export default async function getStudents() {
-    let absences = await Prisma.absences
+    try {
+        let absences = await Prisma.absences
         .findMany({
             include: { class: { include: { Students: true } } },
         })
@@ -17,4 +18,7 @@ export default async function getStudents() {
     );
 
     return absences;
+    }catch(error){
+        console.log(error)
+    }
 }

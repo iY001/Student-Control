@@ -18,19 +18,23 @@ model Grade {
 
 model Classes {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
-  cName    String
+  className    String
   Students Students[]
   Absences Absences[]
+  Department String?
   Grade    Grade      @relation(fields: [gradeId], references: [id])
   gradeId  String     @db.ObjectId
 }
 
 model Students {
   id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
+  stdCode    Int
+  Name       String
   Grade      String
   Class      String
   Department String
+  Email      String
+  phoneNumber Int
   classId    String  @db.ObjectId
   class      Classes @relation(fields: [classId], references: [id], onDelete: Cascade)
 }
