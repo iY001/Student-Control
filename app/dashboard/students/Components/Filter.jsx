@@ -35,7 +35,7 @@ function Filter() {
                 <ListBox array={grades} selected={selectedGrade} setSelected={setSelectedGrade} />
                 <ListBox array={Departments} selected={selectedDept} setSelected={setSelectedDept} />
                 <ListBox array={Classes} selected={selectedClass} setSelected={setSelectedClass} />
-                <button className='bg-main hover:bg-sec foucs:bg-sec duration-300 active:ring-2 active:ring-gray-300 text-white rounded-lg shadow-2xl px-6 '>Search</button>
+                <button className='bg-main hover:bg-sec foucs:bg-sec duration-300 active:ring-2 active:ring-gray-300 text-white rounded-lg shadow-md focus-visible:ring-2 focus-visible:ring-white/75 ring-1 ring-black/5 px-6 '>Search</button>
             </form>
         </>
     )
