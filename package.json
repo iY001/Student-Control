@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@headlessui/react": "^1.7.18",
     "@prisma/client": "^5.9.1",
     "@table-library/react-table-library": "^4.1.7",
     "chart.js": "^4.4.1",
