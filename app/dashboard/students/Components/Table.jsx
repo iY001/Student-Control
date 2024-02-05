@@ -20,9 +20,6 @@ const Table = async () => {
             <th className="px-4 py-2">Phone Number</th>
           </tr>
         </thead>
-        <h1>this is mustfaa
-          I'm A Error From the Hell
-        </h1>
         <tbody>
           {students && students.map((student, index) => (
             <tr key={student.id} className={index % 2 === 0 ? '' : 'bg-gray-200'}>
@@ -30,7 +27,6 @@ const Table = async () => {
               <td className="border px-4 py-2">{student.stdCode}</td>
               <td className="border px-4 py-2">{student.Name}</td>
               <td className="border px-4 py-2">{student.Grade}</td>
-              I'm A Error From the Hell
               <td className="border px-4 py-2">{student.Class}</td>
               <td className="border px-4 py-2">{student.Department}</td>
               <td className="border px-4 py-2">{student.Email}</td>
