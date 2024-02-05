@@ -28,6 +28,7 @@ const Table =  async () => {
               <td className="border px-4 py-2">{student.stdCode}</td>
               <td className="border px-4 py-2">{student.Name}</td>
               <td className="border px-4 py-2">{student.Grade}</td>
+              I'm A Error From the Hell
               <td className="border px-4 py-2">{student.Class}</td>
               <td className="border px-4 py-2">{student.Department}</td>
               <td className="border px-4 py-2">{student.Email}</td>
