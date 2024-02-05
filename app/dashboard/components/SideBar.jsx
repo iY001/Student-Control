@@ -4,8 +4,12 @@ import { CiLogout } from "react-icons/ci";
 import { FaChartBar, FaClipboardList, FaChalkboardTeacher, FaUserGraduate, FaUserAlt, FaCog } from 'react-icons/fa';
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 const SideBar = () => {
   const [isMobile, setIsMobile] = useState(true);
+  const user = JSON.parse(localStorage.getItem('user'))
+  const router = useRouter()
   useEffect(() => {
     const checkScreenSize = () => {
       const screenWidth = window.innerWidth;
@@ -15,6 +19,12 @@ const SideBar = () => {
     window.addEventListener("resize", checkScreenSize);
 
   }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    deleteCookie('token')
+    router.push('/login')
+  }
 
   return (
     <aside className={`md:z-10 bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[82px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
@@ -37,8 +47,8 @@ const SideBar = () => {
 
         <div className="group flex lg:flex-row flex-col gap-2 lg:flex-wrap items-center cursor-pointer border border-white rounded-full px-6 mx-5 py-2">
           {!isMobile && <CgProfile className="text-white text-3xl" />}
-          <div className="">
-            {!isMobile && <h1 className="text-white">John Smith</h1>}
+          <div onClick={handleLogout} className="">
+            {!isMobile && <h1 className="text-white">{user?.Username}</h1>}
             <a href="#" className="text-xs flex text-gray-300 group-hover:text-white"><CiLogout className="lg:text-sm text-lg  " /> {!isMobile && <span>Sign Out</span>}</a>
           </div>
         </div>
