@@ -1,9 +1,9 @@
 import getStudents from '@/Services/Students/getStudents';
 import React from 'react';
 
-const Table =  async () => {
+const Table = async () => {
   const students = await getStudents()
-  
+
   console.log(students)
   return (
     <div className="overflow-x-auto">
@@ -20,9 +20,11 @@ const Table =  async () => {
             <th className="px-4 py-2">Phone Number</th>
           </tr>
         </thead>
-        <h1>this is mustfaa</h1>
+        <h1>this is mustfaa
+          I'm A Error From the Hell
+        </h1>
         <tbody>
-          { students && students.map((student, index) => (
+          {students && students.map((student, index) => (
             <tr key={student.id} className={index % 2 === 0 ? '' : 'bg-gray-200'}>
               <td className="border px-4 py-2">{student.id}</td>
               <td className="border px-4 py-2">{student.stdCode}</td>
