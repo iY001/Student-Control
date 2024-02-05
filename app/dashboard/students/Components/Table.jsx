@@ -25,11 +25,11 @@ const Table = async () => {
             <tr key={student.id} className={index % 2 === 0 ? '' : 'bg-gray-200'}>
               <td className="border px-4 py-2">{student.id}</td>
               <td className="border px-4 py-2">{student.stdCode}</td>
-              <td className="border px-4 py-2">{student.Name}</td>
-              <td className="border px-4 py-2">{student.Grade}</td>
-              <td className="border px-4 py-2">{student.Class}</td>
-              <td className="border px-4 py-2">{student.Department}</td>
-              <td className="border px-4 py-2">{student.Email}</td>
+              <td className="border px-4 py-2">{student.name}</td>
+              <td className="border px-4 py-2">{student.grade}</td>
+              <td className="border px-4 py-2">{student.className}</td>
+              <td className="border px-4 py-2">{student.department}</td>
+              <td className="border px-4 py-2">{student.email}</td>
               <td className="border px-4 py-2">{student.phoneNumber}</td>
             </tr>
           ))}
