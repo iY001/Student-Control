@@ -31,7 +31,7 @@ function Filter() {
     return (
         <>
             <h1 className="text-2xl font-semibold text-d_grey mb-4">Filter</h1>
-            <form onSubmit="" className="relative w-full flex flex-wrap lg:flex-nowrap">
+            <form className="relative w-full flex flex-wrap lg:flex-nowrap">
                 <ListBox array={grades} selected={selectedGrade} setSelected={setSelectedGrade} />
                 <ListBox array={Departments} selected={selectedDept} setSelected={setSelectedDept} />
                 <ListBox array={Classes} selected={selectedClass} setSelected={setSelectedClass} />
