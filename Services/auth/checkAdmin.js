@@ -29,7 +29,7 @@ export default async function checkAdmin (token){
         return {error: "User not found"}
     }
     
-    if(user.Role != "admin"){
+    if(user.role != "admin"){
         return {error: "You don't have permission"}
     }
     return {user};

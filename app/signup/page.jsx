@@ -39,6 +39,7 @@ const Page = () => {
       preConfirm: async (accessRegister) => {
 
         const { error } = await signUp({ ...formData, accessRegister })
+
         if (error) {
           Swal.fire({
             icon: 'error',

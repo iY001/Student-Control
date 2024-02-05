@@ -12,28 +12,28 @@ datasource db {
 
 model Grade {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  GradeName String
-  Classes   Classes[]
+  gradeName String
+  classes   Classes[]
 }
 
 model Classes {
   id         String     @id @default(auto()) @map("_id") @db.ObjectId
   className  String
-  Students   Students[]
-  Absences   Absences[]
-  Department String?
-  Grade      Grade      @relation(fields: [gradeId], references: [id])
+  students   Students[]
+  absences   Absences[]
+  department String?
+  grade      Grade      @relation(fields: [gradeId], references: [id])
   gradeId    String     @db.ObjectId
 }
 
 model Students {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   stdCode     Int
-  Name        String
-  Grade       String
-  Class       String
-  Department  String
-  Email       String
+  name        String
+  grade       String
+  className       String
+  department  String
+  email       String
   phoneNumber Int
   classId     String  @db.ObjectId
   class       Classes @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -43,14 +43,14 @@ model Absences {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   classId    String   @db.ObjectId
   class      Classes  @relation(fields: [classId], references: [id])
-  Date       DateTime @default(now())
+  date       DateTime @default(now())
   studentsID String[]
 }
 
 model Users {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
-  Username String
-  Email    String
-  Password String
-  Role     String
+  username String
+  email    String
+  password String
+  role     String
 }
