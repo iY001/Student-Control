@@ -1,7 +1,7 @@
 import getStudents from '@/Services/Students/getStudents';
 import React from 'react';
 
-const Table =  async () => {
+const Table = async () => {
   const students = await getStudents()
   
   return (
