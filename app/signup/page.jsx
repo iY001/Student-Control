@@ -46,7 +46,7 @@ const Page = () => {
             text: error,
           });
         } else {
-          Swall.fire({
+          Swal.fire({
             icon: 'success',
             title: 'Success',
             text: 'User created successfully',
@@ -78,7 +78,7 @@ const Page = () => {
 
 
           <div className="relative w-[380px] flex items-center  gap-1  border-b border-[#dddddd63] ">
-            <IoMailOutline size={20} />
+            <IoPersonOutline size={20} />
             <input onChange={(e) => handleChange(e)} className="input" name="username" required type="text" />
             <label className="input-label  mx-3">Username</label>
             <span className="input-border" />

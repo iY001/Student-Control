@@ -1,30 +1,53 @@
 "use client"
 import { useEffect, useState } from 'react';
-import SideBar from './components/SideBar';
+import PrivateRoute from './PrivateRoute';
+import { getCookie } from 'cookies-next';
+import checkAdmin from '@/Services/auth/checkAdmin';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
 import Loading from './loading';
 
 const DashboardLayout = ({ children }) => {
-  
-  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-   setTimeout(()=>{
-    setLoading(false)
-   } , 1000)
-  }, []);
+    const CheckAuth = async () => {
+      const token =  getCookie('token')
+      const {user ,error} =  await checkAdmin(token)
+      
+      if(error){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error,
+          position: 'top',
+          toast: true,
+          timerProgressBar: true,
+          timer: 2000,
+          showConfirmButton: false
+        });
+        
+        return router.push('/login')
+      }
 
+      if (user) {
+        return setIsAuthenticated(true)        
+      }
+
+    }
+    
+    CheckAuth()
+  },[])
+
+  
   return (
-    <main className='flex'>
-
-      <section className='lg:flex'>
-      {/* {loading && <Loading />} */}
-      {/* 😀 قفلته عشان كل شوية يضايقني 😀 */}
-        <SideBar />
-        <div className='lg:w-[270px] w-[90px] h-[100vh]'></div>{/* save a place for the sidebar */}
-      </section>
-
-      <div className='w-full h-full'>{children}</div>
-    </main>
+    <>
+    {
+      isAuthenticated ?  <PrivateRoute children={children} /> :<Loading />
+    }
+    </>
+    
   );
 }
 

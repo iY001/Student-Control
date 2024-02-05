@@ -1,4 +1,5 @@
 import Filter from "./Components/Filter";
+import Table from "./Components/Table";
 const Page = () => {
     return (
         <>
@@ -15,7 +16,12 @@ const Page = () => {
                 </div>
                 {/* Filter Container */}
                 <div className="bg-gray-300 h-[0.5px]"></div> {/* Line */}
-            </div>{" "}
+
+                  <section>
+                    {/* <Table /> */}
+                  </section>
+
+            </div>
             {/* Main Div */}
         </>
     );

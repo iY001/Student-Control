@@ -1,30 +1,41 @@
+"use server";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken" 
 
 
-export default function checkAdmin (token){
-    const prisma = new PrismaClient();
+export default async function checkAdmin (token){
+    try {
+      const prisma = new PrismaClient();
 
-    // validate data
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
-
-    if(!decodedToken){
-        return "Invalid token"
+    
+    if (!token) {
+        return {error: "Please Login First"}      
     }
 
-    const user = prisma.users.findFirst({
+    // validate data
+    const decodedToken =  jwt.verify(token, process.env.JWT_SECRET)
+
+    if(!decodedToken){
+        return {error: "Invalid token" }
+    }
+
+    const user = await prisma.users.findFirst({
         where : {
             id: decodedToken.id
         }
     })
 
     if(!user) {
-        return "User not found"
+        return {error: "User not found"}
     }
     
-    if(user.role != "Admin"){
-        return "Not authorized"
+    if(user.Role != "admin"){
+        return {error: "You don't have permission"}
     }
-    return user;
+    return {user};
+      
+    } catch (error) {
+      return {error: error.message}
+    }
     
 }

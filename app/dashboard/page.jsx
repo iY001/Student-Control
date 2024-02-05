@@ -29,11 +29,10 @@ const Page = () => {
         <div className="w-full m-auto">
           <h1 className="uppercase font-bold text-main text-2xl">Leaderboard</h1>
           <div className="mt-10 w-full h-full flex justify-around flex-col md:flex-row gap-10">
-            <div className="md:w-[55%] md:h-[400px] w-full  bg-white drop-shadow-lg p-5 rounded-md"><StudentsAbsenceChart /></div>
-            <div className="md:w-[40%] md:h-[400px] w-full   bg-white drop-shadow-lg p-5 rounded-md flex items-center justify-center"><ClassAbsenceChart /></div>
+            <div className="md:w-[55%] h-[400px] w-full  bg-white drop-shadow-lg p-5 rounded-md"><StudentsAbsenceChart /></div>
+            <div className="md:w-[30%] md:h-[400px] w-full   bg-white drop-shadow-lg p-5 rounded-md flex items-center justify-center"><ClassAbsenceChart /></div>
           </div>
         </div>
-
 
 
         <div className="mt-10 md:w-[80%] w-full m-auto border-2  rounded bg-white">

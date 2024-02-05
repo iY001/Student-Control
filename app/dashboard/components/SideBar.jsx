@@ -13,11 +13,10 @@ const SideBar = () => {
   useEffect(() => {
     const checkScreenSize = () => {
       const screenWidth = window.innerWidth;
-      setIsMobile(screenWidth < 968); // Adjust the screen width threshold as needed
+      setIsMobile(screenWidth < 1024);
     };
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
-
   }, [])
 
   const handleLogout = () => {
@@ -27,12 +26,13 @@ const SideBar = () => {
   }
 
   return (
-    <aside className={`md:z-10 bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[82px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
+    <aside className={`md:z-10 bg-main h-screen fixed top-0 left-0 ${isMobile ? "w-[88px]" : "w-[250px]"}  pt-3 pb-4 text-center font-[sans-serif] overflow-auto shadow-2xl transition-all duration-300`}>
       <div className="relative flex flex-col h-full">
         <div>
           {/* <img src alt /> */}
           <section>
             <h1 className="lg:text-2xl font-bold text-white">STUDENT <br />CONTROL</h1>
+            <img className="w-[50px] h-[50px] mx-auto border-4 border-white rounded-full" src="/assets/We_logo.png" alt="" />
           </section>
         </div>
         <hr className="mx-4 my-3" />
@@ -45,9 +45,9 @@ const SideBar = () => {
           <SideBarItem isMobile={isMobile}  href="/dashboard/settings" icon={FaCog} name="Settings" />
         </ul>
 
-        <div className="group flex lg:flex-row flex-col gap-2 lg:flex-wrap items-center cursor-pointer border border-white rounded-full px-6 mx-5 py-2">
+        <div onClick={handleLogout}  className="group flex lg:flex-row flex-col gap-2 lg:flex-wrap items-center cursor-pointer border border-white rounded-full px-6 mx-5 py-2">
           {!isMobile && <CgProfile className="text-white text-3xl" />}
-          <div onClick={handleLogout} className="">
+          <div  className="">
             {!isMobile && <h1 className="text-white">{user?.Username}</h1>}
             <a href="#" className="text-xs flex text-gray-300 group-hover:text-white"><CiLogout className="lg:text-sm text-lg  " /> {!isMobile && <span>Sign Out</span>}</a>
           </div>
