@@ -18,7 +18,7 @@ const Page = () => {
                 <div className="bg-gray-300 h-[0.5px]"></div> {/* Line */}
 
                   <section>
-                    {/* <Table /> */}
+                    <Table />
                   </section>
 
             </div>

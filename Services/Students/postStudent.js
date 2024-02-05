@@ -1,12 +1,25 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
 
-async function postStudent(data,token) {
+async function postStudent(data) {
   try {
-    const newPost = await prisma.post.create({
-      data: data
+    const prisma = new PrismaClient();
+    const newStudent = await prisma.students.create({
+      data: {
+        name: data.name,
+        stdCode: data.stdCode,
+        className: data.className,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        department: data.department,
+        grade: data.grade,
+        class: {
+          connect: {
+            id: data.classId
+          }
+        }
+      }
     });
-    return newPost;
+    return newStudent;
   } catch (error) {
     console.log(error)
   }

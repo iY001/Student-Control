@@ -28,13 +28,13 @@ model Classes {
 
 model Students {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  stdCode     Int
+  stdCode     String
   name        String
   grade       String
-  className       String
-  department  String
-  email       String
-  phoneNumber Int
+  className   String
+  department  String?
+  email       String?
+  phoneNumber Int?
   classId     String  @db.ObjectId
   class       Classes @relation(fields: [classId], references: [id], onDelete: Cascade)
 }
