@@ -20,6 +20,7 @@ const Table =  async () => {
             <th className="px-4 py-2">Phone Number</th>
           </tr>
         </thead>
+        <h1>this is mustfaa</h1>
         <tbody>
           { students && students.map((student, index) => (
             <tr key={student.id} className={index % 2 === 0 ? '' : 'bg-gray-200'}>
