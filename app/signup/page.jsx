@@ -117,7 +117,7 @@ const Page = () => {
       </section>
 
       <section className="lg:w-[50%] md:w-[40%] w-full  md:h-full h-[200px] bg-[#21458f] overflow-hidden relative">
-        <img alt="" src={'/assets/pattern.png'} className="w-full h-full  object-cover scale-125" />
+        <img alt="" src={'/assets/s1.jpg'} className="w-full h-full  object-cover scale-125" />
       </section>
 
     </section>

@@ -5,7 +5,7 @@ import { getCookie } from 'cookies-next';
 import checkAdmin from '@/Services/auth/checkAdmin';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
-import Loading from './loading';
+import Loading from './loadingg';
 
 const DashboardLayout = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,7 +44,8 @@ const DashboardLayout = ({ children }) => {
   return (
     <>
     {
-      isAuthenticated ?  <PrivateRoute children={children} /> :<Loading />
+      // isAuthenticated ?  <PrivateRoute children={children} /> :<Loading />
+      true ?  <PrivateRoute children={children} /> :<Loading />
     }
     </>
     

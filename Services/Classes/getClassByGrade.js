@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 export default async function getClassByGrade(grade) {
   try {
     const prisma = new PrismaClient();
-    return prisma.classes.findFirst({
+    return await prisma.classes.findFirst({
       where : {
         Grade : grade,
       },
