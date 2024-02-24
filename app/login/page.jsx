@@ -17,6 +17,7 @@ const Page = () => {
     email: '',
     password: ''
   });
+  
   const router = useRouter();
   const [isLogedIn, setIsLoggedIn] = useState(false);
 
