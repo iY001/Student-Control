@@ -15,11 +15,11 @@ const Page = () => {
                     </div>
                 </div>
                 {/* Filter Container */}
-                <div className="bg-gray-300 h-[0.5px]"></div> {/* Line */}
+                <div className="bg-gray-300 h-[0.5px] my-6"></div> {/* Line */}
 
-                  <section>
+                <section>
                     <Table />
-                  </section>
+                </section>
 
             </div>
             {/* Main Div */}

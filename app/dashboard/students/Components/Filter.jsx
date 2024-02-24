@@ -2,8 +2,12 @@
 import { useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import ListBox from './ListBox'
+import getGrades from '@/Services/grade/getGrades'
 function Filter() {
-    const grades = [
+
+    const grades = getGrades()
+
+    const Grades = [
         { name: 'A' },
         { name: 'B' },
         { name: 'C' },
@@ -31,11 +35,12 @@ function Filter() {
     return (
         <>
             <h1 className="text-2xl font-semibold text-d_grey mb-4">Filter</h1>
-            <form className="relative w-full flex flex-wrap lg:flex-nowrap">
-                <ListBox array={grades} selected={selectedGrade} setSelected={setSelectedGrade} />
+            <form className="relative md:w-full flex md:flex-nowrap flex-wrap">
+                <p>{grades.gradeName}</p>
+                <ListBox array={Grades} selected={selectedGrade} setSelected={setSelectedGrade} />
                 <ListBox array={Departments} selected={selectedDept} setSelected={setSelectedDept} />
                 <ListBox array={Classes} selected={selectedClass} setSelected={setSelectedClass} />
-                <button className='bg-main hover:bg-sec foucs:bg-sec duration-300 active:ring-2 active:ring-gray-300 text-white rounded-lg shadow-md focus-visible:ring-2 focus-visible:ring-white/75 ring-1 ring-black/5 px-6 '>Search</button>
+                <button className='lg:w-[8%] md:mx-8 md:mt-0 mt-10 h-9 w-[94%] md:px-2  bg-main hover:bg-sec foucs:bg-sec rounded-lg duration-300 active:ring-2 active:ring-gray-300 text-white shadow-md focus-visible:ring-2 focus-visible:ring-white/75 ring-1 ring-black/5'>Search</button>
             </form>
         </>
     )
