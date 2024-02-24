@@ -1,6 +1,10 @@
+import getStudents from "@/Services/Students/getStudents";
 import Filter from "./Components/Filter";
 import Table from "./Components/Table";
-const Page = () => {
+
+const Page = async () => {
+  const students = await getStudents()
+  
     return (
         <>
             <div className="w-full my-8">
@@ -8,18 +12,11 @@ const Page = () => {
                     Students
                 </h1>
                 <div className="bg-gray-300 h-[0.5px]"></div> {/* Line */}
-                {/* Filter Container */}
-                <div className="w-[75%]">
-                    <div className="p-4">
-                        <Filter />
-                    </div>
-                </div>
-                {/* Filter Container */}
-                <div className="bg-gray-300 h-[0.5px] my-6"></div> {/* Line */}
+                
 
-                <section>
-                    <Table />
-                </section>
+                  <section>
+                    <Table students={students} />
+                  </section>
 
             </div>
             {/* Main Div */}

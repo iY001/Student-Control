@@ -11,7 +11,7 @@ export default async function postClass(name,grade) {
       gradeId = (await postGrade(grade))?.id
     }
 
-    return prisma.classes.create({
+    return await prisma.classes.create({
       data: {
         className: name,
         grade: {

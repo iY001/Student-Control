@@ -1,57 +1,77 @@
-import React from "react";
-import { useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
+import React, { useState } from "react";
+import { Transition } from "@headlessui/react";
+import { RiCloseCircleFill } from "react-icons/ri"; // Importing the close icon from React Icons
+
 function ListBox({ array, selected, setSelected }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSelect = (item) => {
+    setSelected(item);
+    setIsOpen(false);
+  };
+
+  const handleCancel = () => {
+    setSelected(null); 
+    setIsOpen(false);
+  };
+
   return (
-    <>
-      <div className="lg:w-[16%] md:w-[30%] w-full text-left mr-4 md:my-0 my-2">
-        <Listbox value={selected} onChange={setSelected}>
-          <div className="relative mt-1">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-l_grey focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-main sm:text-sm">
-              <span className="block truncate">
-                {selected.name ? selected.name : selected}
-              </span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <div className="h-5 w-5 text-gray-400" aria-hidden="true" />
-              </span>
-            </Listbox.Button>
-            <Transition
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0">
-              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                {array.map((grade, gradeIdx) => (
-                  <Listbox.Option
-                    key={gradeIdx}
-                    className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${active
-                        ? "bg-sec bg-opacity-70 text-white"
-                        : "text-gray-900"
-                      }`
-                    }
-                    value={grade}>
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className={`block truncate ${selected ? "font-medium" : "font-normal"
-                            }`}>
-                          {grade.name}
-                        </span>
-                        {selected ? (
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                          </span>
-                        ) : null}
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        </Listbox>
+    <div className="relative inline-block text-left">
+      <div className="flex items-center gap-1">
+        <button
+          type="button"
+          className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-l_grey focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-main sm:text-sm"
+          onClick={toggleDropdown}
+        >
+          <span className="block truncate">
+            {selected ? selected : "Select..."}
+          </span>
+          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+            <div className="h-5 w-5 text-gray-400" aria-hidden="true" />
+          </span>
+        </button>
+        {
+          selected && <div className="flex justify-center items-center ">
+          <button
+            type="button"
+            className="focus:outline-none text-center  "
+            onClick={handleCancel}
+          >
+            <RiCloseCircleFill className="h-5 w-5 text-gray-400 hover:text-gray-500" />
+          </button>
+        </div>
+        }
       </div>
-    </>
+      <Transition
+        show={isOpen}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <div className="absolute mt-1 w-full max-h-64 overflow-y-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+
+          {array?.map((grade, gradeIdx) => (
+            <div
+              key={gradeIdx}
+              className={`relative cursor-default select-none py-2  text-center ${selected === grade ? "bg-sec bg-opacity-70 text-white" : "text-gray-900"
+                }`}
+              onClick={() => handleSelect(grade)}
+            >
+              <span className={`block truncate ${selected === grade ? "font-medium" : "font-normal"}`}>
+                {grade}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Transition>
+    </div>
   );
 }
 
